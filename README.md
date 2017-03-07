@@ -13,7 +13,8 @@
 ## Swift项目-仿网易新闻客户端
 ### 效果图: 
 
-![](https://ws1.sinaimg.cn/mw690/c3a20316gy1fdegatfuhjg20bj0j64qu)
+
+![](https://github.com/ChinaHackers/News/raw/master/Preview/preview.gif)
 
 ## 说明
 数据接口来源: 通过 Charles 抓包获得.
