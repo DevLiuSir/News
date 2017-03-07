@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ThreeImagesViewCell" id="KGk-i7-Jjw" customClass="NewViewCell" customModule="News" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="398" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="398" height="150.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cme-P9-epy">
+                        <rect key="frame" x="359" y="127" width="31" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nil-5f-rOS">
+                        <rect key="frame" x="137" y="30" width="125" height="91"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NIS-RS-tOu">
+                        <rect key="frame" x="8" y="30" width="126" height="91"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DAk-42-Dej">
+                        <rect key="frame" x="263" y="30" width="127" height="91"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网易原创" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhr-pJ-3js">
+                        <rect key="frame" x="8" y="128" width="49.5" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="网易新闻内容.网易新闻内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxD-gq-Wxv">
+                        <rect key="frame" x="8" y="5" width="374" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="gxD-gq-Wxv" secondAttribute="trailing" constant="16" id="1ny-NS-7Dl"/>
+                    <constraint firstItem="cme-P9-epy" firstAttribute="top" secondItem="DAk-42-Dej" secondAttribute="bottom" constant="6" id="36r-wC-lu2"/>
+                    <constraint firstItem="nil-5f-rOS" firstAttribute="leading" secondItem="NIS-RS-tOu" secondAttribute="trailing" constant="3" id="8XU-JM-eQp"/>
+                    <constraint firstItem="NIS-RS-tOu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9x9-pg-xHh"/>
+                    <constraint firstItem="nil-5f-rOS" firstAttribute="width" secondItem="NIS-RS-tOu" secondAttribute="width" constant="-1" id="Akb-QL-e4b"/>
+                    <constraint firstItem="DAk-42-Dej" firstAttribute="width" secondItem="NIS-RS-tOu" secondAttribute="width" constant="1" id="BDg-h1-0Lw"/>
+                    <constraint firstItem="nil-5f-rOS" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Hu3-hH-2IB"/>
+                    <constraint firstAttribute="bottom" secondItem="fhr-pJ-3js" secondAttribute="bottom" constant="8" id="N9v-WR-F1Y"/>
+                    <constraint firstAttribute="trailing" secondItem="DAk-42-Dej" secondAttribute="trailing" constant="8" id="NAu-RW-bOf"/>
+                    <constraint firstAttribute="trailing" secondItem="cme-P9-epy" secondAttribute="trailing" constant="8" id="SJF-Vp-maf"/>
+                    <constraint firstItem="nil-5f-rOS" firstAttribute="top" secondItem="NIS-RS-tOu" secondAttribute="top" id="TLg-zl-PBK"/>
+                    <constraint firstItem="fhr-pJ-3js" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="cBn-Nr-dOk"/>
+                    <constraint firstItem="gxD-gq-Wxv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="gKG-ls-7sw"/>
+                    <constraint firstItem="DAk-42-Dej" firstAttribute="height" secondItem="NIS-RS-tOu" secondAttribute="height" id="goG-Vz-O4j"/>
+                    <constraint firstItem="NIS-RS-tOu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="hX7-SL-NpW"/>
+                    <constraint firstAttribute="bottom" secondItem="DAk-42-Dej" secondAttribute="bottom" constant="29" id="ij1-1J-vSD"/>
+                    <constraint firstItem="DAk-42-Dej" firstAttribute="top" secondItem="NIS-RS-tOu" secondAttribute="top" id="lez-kz-QEH"/>
+                    <constraint firstItem="gxD-gq-Wxv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vkq-Xw-QsN"/>
+                    <constraint firstItem="nil-5f-rOS" firstAttribute="height" secondItem="NIS-RS-tOu" secondAttribute="height" id="xdE-CQ-Dyu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="iconImageView" destination="NIS-RS-tOu" id="ii4-Ds-dS5"/>
+                <outlet property="replyCountLabel" destination="cme-P9-epy" id="z3M-UU-RMj"/>
+                <outlet property="sourceLabel" destination="fhr-pJ-3js" id="OfZ-49-cb2"/>
+                <outlet property="titleLabel" destination="gxD-gq-Wxv" id="qln-Zp-z9E"/>
+                <outletCollection property="extraImages" destination="DAk-42-Dej" collectionClass="NSMutableArray" id="IIn-kt-hYR"/>
+                <outletCollection property="extraImages" destination="nil-5f-rOS" collectionClass="NSMutableArray" id="drh-XK-cDQ"/>
+            </connections>
+            <point key="canvasLocation" x="23" y="-39.5"/>
+        </tableViewCell>
+    </objects>
+</document>

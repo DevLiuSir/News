@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gta-JH-7Ne">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--图秀-->
+        <scene sceneID="F76-Z8-vWm">
+            <objects>
+                <tableViewController id="wJE-sM-4W8" customClass="PhotoViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Reu-e5-Pce">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="wJE-sM-4W8" id="rDj-lI-mHM"/>
+                            <outlet property="delegate" destination="wJE-sM-4W8" id="SNR-4q-Aql"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="图秀" id="I4A-5l-8YJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BjO-ZS-Gd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="223"/>
+        </scene>
+        <!--图秀-->
+        <scene sceneID="DIk-2X-Eri">
+            <objects>
+                <navigationController id="Gta-JH-7Ne" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="图秀" image="tabbar_icon_photo_normal" id="zNc-LF-82l"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="unZ-Yr-HP6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wJE-sM-4W8" kind="relationship" relationship="rootViewController" id="tF1-Cb-id9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igd-vP-9GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-474" y="223"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tabbar_icon_photo_normal" width="25" height="25"/>
+    </resources>
+</document>

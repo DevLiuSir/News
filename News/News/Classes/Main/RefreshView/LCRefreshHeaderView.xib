@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LCRefreshHeaderView" customModule="News" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SSL-78-Bva">
+                    <rect key="frame" x="23" y="40" width="20" height="20"/>
+                </activityIndicatorView>
+                <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lc_refresh_down" translatesAutoresizingMaskIntoConstraints="NO" id="Uyz-Li-mbD">
+                    <rect key="frame" x="20" y="20" width="23" height="60"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下拉可以刷新" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiW-lX-5Dz">
+                    <rect key="frame" x="130" y="20" width="92" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wME-oL-Fdj">
+                    <rect key="frame" x="65" y="53" width="245" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="nHH-GD-Liw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hiW-lX-5Dz" firstAttribute="leading" secondItem="Uyz-Li-mbD" secondAttribute="trailing" constant="87" id="AZ5-0t-Lxm"/>
+                <constraint firstItem="wME-oL-Fdj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KVe-hW-yjf"/>
+                <constraint firstItem="Uyz-Li-mbD" firstAttribute="centerY" secondItem="SSL-78-Bva" secondAttribute="centerY" id="KaS-Ww-Inx"/>
+                <constraint firstAttribute="trailing" secondItem="wME-oL-Fdj" secondAttribute="trailing" constant="65" id="Log-Kb-uwS"/>
+                <constraint firstItem="Uyz-Li-mbD" firstAttribute="trailing" secondItem="SSL-78-Bva" secondAttribute="trailing" id="lCr-c0-XiH"/>
+                <constraint firstItem="wME-oL-Fdj" firstAttribute="top" secondItem="hiW-lX-5Dz" secondAttribute="bottom" constant="15" id="sOe-hj-ld5"/>
+                <constraint firstItem="Uyz-Li-mbD" firstAttribute="top" secondItem="hiW-lX-5Dz" secondAttribute="top" id="vKX-P6-Z1H"/>
+                <constraint firstAttribute="bottom" secondItem="wME-oL-Fdj" secondAttribute="bottom" constant="17" id="wzM-gl-f0Q"/>
+                <constraint firstItem="Uyz-Li-mbD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="xyy-hk-sWD"/>
+                <constraint firstItem="wME-oL-Fdj" firstAttribute="leading" secondItem="Uyz-Li-mbD" secondAttribute="trailing" constant="22" id="zfN-YP-4pp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="activity" destination="SSL-78-Bva" id="i0K-4M-cxf"/>
+                <outlet property="contentLabel" destination="hiW-lX-5Dz" id="QMl-Tk-Ahi"/>
+                <outlet property="image" destination="Uyz-Li-mbD" id="ptg-Bt-q66"/>
+                <outlet property="lastUpdateTimeLabel" destination="wME-oL-Fdj" id="TdR-Y9-ak3"/>
+            </connections>
+            <point key="canvasLocation" x="167.5" y="-230"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="lc_refresh_down" width="23" height="60"/>
+    </resources>
+</document>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lp2-30-NYl">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--阅读-->
+        <scene sceneID="Urd-oW-8QN">
+            <objects>
+                <tableViewController id="l3l-Qm-LOP" customClass="ReadViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LsO-re-hcZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="l3l-Qm-LOP" id="2pq-nU-DOZ"/>
+                            <outlet property="delegate" destination="l3l-Qm-LOP" id="xph-kA-zaV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="阅读" id="eFG-cR-g0M"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPH-bg-ZKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-25" y="-547"/>
+        </scene>
+        <!--阅读-->
+        <scene sceneID="EdG-Kl-WDS">
+            <objects>
+                <navigationController id="lp2-30-NYl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="阅读" image="tabbar_icon_reader_normal" id="FYr-Ec-dMo"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="54Q-Pt-98e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="l3l-Qm-LOP" kind="relationship" relationship="rootViewController" id="Uv6-hS-Mt2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ndj-49-vSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-764" y="-547"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tabbar_icon_reader_normal" width="25" height="25"/>
+    </resources>
+</document>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nam-jp-EhG">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--我-->
+        <scene sceneID="ijG-EC-A7u">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="GYP-dD-Dec" customClass="MeViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0TD-pL-MIl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="GYP-dD-Dec" id="aT0-hO-662"/>
+                            <outlet property="delegate" destination="GYP-dD-Dec" id="cPy-Ul-1VA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="我" id="ilZ-6b-OPx"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aci-LL-s45" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1567" y="582"/>
+        </scene>
+        <!--我-->
+        <scene sceneID="kac-VF-BPB">
+            <objects>
+                <navigationController id="nam-jp-EhG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我" image="tabbar_icon_me_normal" id="yaH-t3-SYr"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZBy-xb-FV4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GYP-dD-Dec" kind="relationship" relationship="rootViewController" id="mq0-Wp-nWr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Bz-pC-Y0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2270" y="583"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tabbar_icon_me_normal" width="25" height="25"/>
+    </resources>
+</document>
