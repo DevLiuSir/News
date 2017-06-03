@@ -20,10 +20,10 @@ class LCRefreshHeaderView: UIView {
     
     // MARK: - 定义属性
     
-    // 定义可以滚动的视图, 用于监听父控件的滚动
+    /// 定义可以滚动的视图, 用于监听父控件的滚动
     var superScrollView: UIScrollView!
   
-    // 记录当前刷新状态
+    /// 记录当前刷新状态
     var Header_refreshStatus: LCRefresh_HeaderStatus!
     
     // MARK: - 提供一个设置状态的方法
@@ -80,13 +80,13 @@ extension LCRefreshHeaderView{
         contentLabel.text = "松开立即刷新"
         image.isHidden = false
         
-        UIView.animate(withDuration: 0.25) {  // 图片旋转180°
-            self.image.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI))
+        UIView.animate(withDuration: 0.25) {  // 图片逆时针旋转180°
+            self.image.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI + 0.001))
         }
     }
     
     // MARK: 正在刷新状态
-    fileprivate func setRefreshingStatus() {
+    func setRefreshingStatus() {
         activity.isHidden = false
         activity.startAnimating()
         contentLabel.text = "正在刷新数据..."
@@ -94,24 +94,24 @@ extension LCRefreshHeaderView{
         
         print("发送请求给服务器")
         
+        // MARK: 状态栏是否显示风火轮
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        
         // 执行2秒, 增大内边距
         UIView.animate(withDuration: 0.25, animations: {
             
             self.superScrollView.contentInset = UIEdgeInsets(top: self.superScrollView.contentInset.top + refresh_HeaderViewHeight, left: self.superScrollView.contentInset.left, bottom: self.superScrollView.contentInset.bottom, right: self.superScrollView.contentInset.right)
-            
         })
         
         // 结束刷新
         self.endRefreshing()
+        
     }
     
     // MARK: 结束刷新
     fileprivate func endRefreshing() {
       
-        // 保存刷新时间
-        self.last_UpdateTime()
-        
-        
         // 延迟2秒执行
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(2 * NSEC_PER_SEC))/Double(NSEC_PER_SEC) , execute: {
             
@@ -124,11 +124,13 @@ extension LCRefreshHeaderView{
                 
             })
             
-            // 恢复正常状态
-            self.Header_refreshStatus = LCRefresh_HeaderStatus.normal
         
         })
-        
+        // 保存刷新时间
+        self.last_UpdateTime()
+
+        // 恢复正常状态
+        self.Header_refreshStatus = LCRefresh_HeaderStatus.normal
     }
     
     // MARK: - 最后更新的时间..
@@ -148,7 +150,6 @@ extension LCRefreshHeaderView{
         // 显示日期
         self.lastUpdateTimeLabel.text = "最后更新: \(dateStr)"
     }
-    
     
     // MARK: - ***** 监听 tableView 的滚动 ******
     
@@ -221,7 +222,10 @@ extension LCRefreshHeaderView{
                 setStatus(.refreshing)      // 切换到刷新中状态
             }
         }
- */
+        
+ 
+*/
+
             guard superScrollView.contentOffset.y > refreshView_OffSet else {
                 setStatus(.waitRefresh)     // 切换到等待刷新状态
                 return
@@ -236,7 +240,7 @@ extension LCRefreshHeaderView{
         
     }
   
- 
+
     // MARK: - 移除 KVO 的监听
     override func removeObserver(_ observer: NSObject, forKeyPath keyPath: String) {
         

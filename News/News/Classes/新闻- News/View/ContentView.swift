@@ -8,92 +8,74 @@
 
 import UIKit
 
-
+// MARK: - 定义协议
 protocol ContentViewDelegate : class {
     func contentView(_ contentView : ContentView, progress : CGFloat, sourceIndex : Int, targetIndex : Int)
 }
 
-// 单元格重用标识符
+// MARK: - 单元格重用标识符
 private let identify = "cell"
 private let contentCell = "contentViewCell"
 
 
-//MARK: - 内容视图
+// MARK: - 内容视图
 class ContentView: UIView {
 
-    // MARK: - 定义属性
+    // MARK: - 定义属性    
+    /// 代理属性
+    weak var delegate : ContentViewDelegate?
+    /// 定义一个数组, 来存储所有的控制器
     fileprivate var childVCs: [UIViewController]
     
-    fileprivate weak var parentViewController: UIViewController?
-    
+    /// 开始OffsetX
     fileprivate var startOffsetX : CGFloat = 0
     
-    fileprivate var isForbidScrollDelegate : Bool = false       // 是否禁止代理方法
+    /// 是否禁止代理方法
+    fileprivate var isForbidScrollDelegate : Bool = false
     
-    weak var delegate : ContentViewDelegate?
+    /// 控制器
+    fileprivate weak var parentViewController: UIViewController?
     
-    
-    
-    fileprivate lazy var channels = ChannelModel.channels()  // 频道列表
-    
-    
-    
-    
-    
-    //MARK: - 懒加载属性
-   
-    //MARK: 集合视图: UICollectionView
+    // MARK: - 懒加载属性
+    /// 频道列表对象
+    fileprivate lazy var channels = ChannelModel.channels()
+    /// 集合视图
     fileprivate lazy var collectionView : UICollectionView = {[weak self] in
         
         // 创建 UICollectionViewFlowLayout 布局对象
         // UICollectionView 的layout 属性: 支持 Flow\ Custom 2中布局方式. 横排\纵排 -> 网格
         
         let layout = UICollectionViewFlowLayout()
-        
-         // 设置单元格的大小
-        layout.itemSize = (self?.bounds.size)!
-        
-        // 设置单元格之间的最小 行间距
-        layout.minimumLineSpacing = 0
-        
-        // 设置单元格之间的最小 列间距
-        layout.minimumInteritemSpacing = 0
-        
-        // 设置布局方向为: 水平滚动
-        layout.scrollDirection = .horizontal
+        layout.itemSize = (self?.bounds.size)!      // 设置单元格的大小
+        layout.minimumLineSpacing = 0               // 设置单元格之间的最小 行间距
+        layout.minimumInteritemSpacing = 0          // 设置单元格之间的最小 列间距
+        layout.scrollDirection = .horizontal        // 设置布局方向为: 水平滚动
         
         // 创建UICollectionView
-        // CGRect.Zero: 是一个高度和宽度为零、位于(0，0)的矩形常量
+        // CGRect.zero: 是一个高度和宽度为零、位于(0，0)的矩形常量
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         
         collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        // 是否显示水平方向指示器
-        collectionView.showsVerticalScrollIndicator = false
-        
-        // 是否分页显示
-        collectionView.isPagingEnabled = true
-        
-        // 设置边缘是否弹动效果
-        collectionView.bounces = false
-        
-        // 设置点击状态栏是否回到顶部
-        collectionView.scrollsToTop = false
-        
-        // 设置 collectionView 数据源\代理为当前类
+        collectionView.backgroundColor = .white
+        collectionView.showsVerticalScrollIndicator = false    // 是否显示水平方向指示器
+        collectionView.isPagingEnabled = true                  // 是否分页显示
+        collectionView.bounces = false                         // 设置边缘是否弹动效果
+        collectionView.scrollsToTop = false                    // 设置点击状态栏是否回到顶部
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        // 注册 cell. 由于内容滚动视图没用 storyboard， 因此需要注册。
+        // 注册 cell. 
+        // 由于内容滚动视图没用 storyboard， 因此需要注册。
         collectionView.register(UINib(nibName: "ContentViewCell", bundle: nil), forCellWithReuseIdentifier: contentCell)
-        
         return collectionView
-
     }()
     
-    
-    // MARK: - 自定义构造函数
-    // 参数: frame\ 对应的控制器 \ 父控制器
+    /// 自定义构造函数
+    ///
+    /// - Parameters:
+    ///   - frame: 尺寸
+    ///   - childVCs: 对应控制器
+    ///   - parentViewController: 父控制器
     init(frame: CGRect, childVCs: [UIViewController], parentViewController: UIViewController) {
        
         self.childVCs = childVCs
@@ -101,7 +83,6 @@ class ContentView: UIView {
 
         super.init(frame: frame)
         
-        // 设置 UI
         setupUI()
     }
     
@@ -112,9 +93,9 @@ class ContentView: UIView {
 }
 
 
-//MARK: - 设置 UI 界面
+//MARK: - 设置UI界面
 extension ContentView {
-    
+    /// 设置UI界面
      func setupUI() {
         
         // 将所有的子控制器添加到父控制器中
@@ -130,14 +111,16 @@ extension ContentView {
 }
 
 
-// MARK: - 遵守 UICollectionViewDataSource 数据源协议
+// MARK: - 遵守 UICollectionViewDataSource 协议
 extension ContentView: UICollectionViewDataSource {
     
-    // 设置collectionView单元格的数量
+    // 设置集合视图单元格的数量
     // 每一组有多少条数据
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return childVCs.count
+//        return childVCs.count
+         return channels.count
+        
     }
     
     // 初始化\返回集合视图的单元格
@@ -145,6 +128,8 @@ extension ContentView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: contentCell, for: indexPath) as! ContentViewCell
+        cell.tid = channels[indexPath.row].tid
+
 /*
         // 设置cell内容
         // cell 有循环利用, 可能会添加多次, 因此先把之前的移除, 再添加
@@ -164,26 +149,31 @@ extension ContentView: UICollectionViewDataSource {
     
 }
 
+
 // MARK: - 遵守 UICollectionViewDelegate 协议
 extension ContentView: UICollectionViewDelegate {
-    
-    // 开始拖拽时,调用
+
+    /// 开始拖拽时->调用
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         isForbidScrollDelegate = false
         startOffsetX = scrollView.contentOffset.x
         
     }
-    // 滚动完成时,调用
+    /// 滚动完成时->调用
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // 判断是否是点击事件
         if isForbidScrollDelegate { return }
     
         // 定义获取需要的数据
-        var progress: CGFloat = 0   // 当前滚动的进度
-        var sourceIndex: Int = 0    // 起始位置下标值
-        var targetIndex: Int = 0    // 目标位置下标值
+        
+        /// 当前滚动的进度
+        var progress: CGFloat = 0
+        /// 起始位置下标值
+        var sourceIndex: Int = 0
+        /// 目标位置下标值
+        var targetIndex: Int = 0
         
         // 获取进度
         let currentOffsetX = scrollView.contentOffset.x
@@ -234,7 +224,11 @@ extension ContentView: UICollectionViewDelegate {
 
 // MARK: - 对外暴露的方法
 extension ContentView {
-     func setCurrentIndex(_ currentIndex : Int) {
+    
+    /// 告诉当前点击的 Index
+    ///
+    /// - Parameter currentIndex:  当前点击 Index
+    func setCurrentIndex(_ currentIndex : Int) {
         
         // 1.记录需要进制执行代理方法
         isForbidScrollDelegate = true

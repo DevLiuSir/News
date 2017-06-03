@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lp2-30-NYl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lp2-30-NYl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,23 +10,23 @@
     </dependencies>
     <scenes>
         <!--阅读-->
-        <scene sceneID="Urd-oW-8QN">
+        <scene sceneID="ayk-6n-Sus">
             <objects>
-                <tableViewController id="l3l-Qm-LOP" customClass="ReadViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LsO-re-hcZ">
+                <viewController id="CCP-H4-yDo" customClass="ReadViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8sx-Pu-26O"/>
+                        <viewControllerLayoutGuide type="bottom" id="HwL-cT-hKz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5c4-JM-dE2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="dataSource" destination="l3l-Qm-LOP" id="2pq-nU-DOZ"/>
-                            <outlet property="delegate" destination="l3l-Qm-LOP" id="xph-kA-zaV"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="阅读" id="eFG-cR-g0M"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CPH-bg-ZKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="阅读" id="55H-NL-fIm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5CP-9k-YXr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="-547"/>
+            <point key="canvasLocation" x="-300" y="-548"/>
         </scene>
         <!--阅读-->
         <scene sceneID="EdG-Kl-WDS">
@@ -39,12 +39,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="l3l-Qm-LOP" kind="relationship" relationship="rootViewController" id="Uv6-hS-Mt2"/>
+                        <segue destination="CCP-H4-yDo" kind="relationship" relationship="rootViewController" id="zoN-jD-hAC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndj-49-vSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-764" y="-547"/>
+            <point key="canvasLocation" x="-1044" y="-548"/>
         </scene>
     </scenes>
     <resources>

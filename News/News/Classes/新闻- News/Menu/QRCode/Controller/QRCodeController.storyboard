@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rz2-SW-Qnq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--扫扫看-->
+        <scene sceneID="oS0-we-xBk">
+            <objects>
+                <viewController id="whj-sb-hgM" customClass="QRCodeViewController" customModule="News" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ULc-NX-42G"/>
+                        <viewControllerLayoutGuide type="bottom" id="s1g-ux-A4y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sHV-DQ-w0F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zxingvc_fk" translatesAutoresizingMaskIntoConstraints="NO" id="zeW-y4-iwr">
+                                <rect key="frame" x="87" y="233" width="200" height="200"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zxingvc_sm" translatesAutoresizingMaskIntoConstraints="NO" id="c0k-Ml-C3x">
+                                <rect key="frame" x="87" y="233" width="200" height="200"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将取景器对准二维码, 即可自动扫描" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIU-eg-GAa">
+                                <rect key="frame" x="92" y="210" width="191" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c0k-Ml-C3x" firstAttribute="width" secondItem="zeW-y4-iwr" secondAttribute="width" id="JfE-Do-4Im"/>
+                            <constraint firstItem="c0k-Ml-C3x" firstAttribute="top" secondItem="gIU-eg-GAa" secondAttribute="bottom" constant="8" id="OWt-Ai-MCu"/>
+                            <constraint firstItem="zeW-y4-iwr" firstAttribute="top" secondItem="ULc-NX-42G" secondAttribute="bottom" constant="169" id="TX2-qa-MK8"/>
+                            <constraint firstItem="c0k-Ml-C3x" firstAttribute="top" secondItem="zeW-y4-iwr" secondAttribute="top" id="oPN-uA-JXo"/>
+                            <constraint firstItem="c0k-Ml-C3x" firstAttribute="centerX" secondItem="zeW-y4-iwr" secondAttribute="centerX" id="qEe-fW-gBH"/>
+                            <constraint firstItem="c0k-Ml-C3x" firstAttribute="height" secondItem="zeW-y4-iwr" secondAttribute="height" id="r0C-3n-M3A"/>
+                            <constraint firstItem="zeW-y4-iwr" firstAttribute="centerX" secondItem="gIU-eg-GAa" secondAttribute="centerX" id="t34-Nd-5uI"/>
+                            <constraint firstItem="c0k-Ml-C3x" firstAttribute="centerY" secondItem="sHV-DQ-w0F" secondAttribute="centerY" id="ut9-Nl-k0T"/>
+                            <constraint firstItem="c0k-Ml-C3x" firstAttribute="centerX" secondItem="sHV-DQ-w0F" secondAttribute="centerX" id="vfH-Ej-K9X"/>
+                            <constraint firstItem="zeW-y4-iwr" firstAttribute="leading" secondItem="sHV-DQ-w0F" secondAttribute="leadingMargin" constant="71" id="wtc-rQ-r0j"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="扫扫看" id="qI5-R9-zI7">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="jYQ-bP-qZa">
+                            <connections>
+                                <action selector="backBtn:" destination="whj-sb-hgM" id="Hls-Oh-Nh8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="闪光灯关着" id="xN7-DW-RVZ"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5MX-aa-4ye" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="644" y="136.28185907046478"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s7W-xQ-WSx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rz2-SW-Qnq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="blackTranslucent" id="43M-c6-gGg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="whj-sb-hgM" kind="relationship" relationship="rootViewController" id="dZ2-z4-iv8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Lt-Bq-iop" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-90.400000000000006" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="58" height="44"/>
+        <image name="zxingvc_fk" width="440" height="440"/>
+        <image name="zxingvc_sm" width="424" height="228"/>
+        <image name="闪光灯关着" width="58" height="44"/>
+    </resources>
+</document>

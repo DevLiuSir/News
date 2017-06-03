@@ -7,23 +7,26 @@
 //
 
 import Foundation
-import SwiftyJSON
+//import SwiftyJSON
 
-// MARK: -频道列表
+// MARK: - 频道列表模型
 class ChannelModel : NSObject {
     
-    
+    /// 新闻ID
     var tid: String?
     
-    var tname: String?      // 分类标题
+    /// 新闻频道标题
+    var tname: String?
     
     var urlString: String?
     
+    var topicid: String?
+    
+    var cid: String?
+    
     init(dict: [String: AnyObject]) {
         super.init()
-       
         setValuesForKeys(dict)
-
     }
  
     override func setValue(_ value: Any?, forKey key: String) {
@@ -34,48 +37,79 @@ class ChannelModel : NSObject {
         
     }
     
-    // 通过 json 文件 加载 标题按钮
+    /// 通过json文件加载标题按钮
     static func channels() -> [ChannelModel] {
         
+        /// 定义变量, 存储模型数组
         var arrM = [ChannelModel]()
         
-        // 加载 json 文件
-//        let data = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "topic_news", ofType: "json")!))
+        // MARK: - try?: 弱try   如果解析成功, 就有值, 否则为nil
         
-        // 加载 html
+        // 加载 json 文件
+        //let data = try? Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "topic_news", ofType: "json")!))
+        
+        // 加载URL
         let data = try? Data(contentsOf: URL(string: "http://c.m.163.com/nc/topicset/ios/subscribe/manage/listspecial.html")!)
         
-        do {
-            var json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [String: AnyObject]
+        // MARK: 反序列化 解析URL
+        let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves) as! [String: AnyObject]
+        
+        // 根据 tList 的 key 取出内容
+        let channels = json?["tList"] as! [[String: AnyObject]]
 
-            
-            var channels = json["tList"] as! [[String: AnyObject]]
-         
-            //遍历数据
-            for i in 0 ..< channels.count {
-            
-                 //字典转模型
-                let channelModel = ChannelModel(dict: channels[i])
-                
-                arrM.append(channelModel)
-            }
-           //对模型中的tid进行排序
-            arrM.sort(by: { (s1, s2) -> Bool in
-            
-                return s1.tid! < s2.tid!
-            })
-            
+        
+        // 遍历字典, 将字典转换成模型对象
+        for i in 0 ..< channels.count {
+            // 字典转模型
+            let channelModel = ChannelModel(dict: channels[i])
+
+            // 添加到数组中
+            arrM.append(channelModel)
         }
-        catch {
-            
-        }
+      
+        //对模型中的tid进行排序
+        arrM.sort(by: { (s1, s2) -> Bool in
+
+            //return s1.tid! < s2.tid!
+            //return s1.topicid! < s2.topicid!
+            return s1.cid! < s2.cid!
+        })
         return arrM
     }
     
     
-    
-//   static func setTid(_ tid: String) {
-//        self.tid = tid
-//        self.urlString = "article/headline/\(tid)/0-20.html"
-//    }
 }
+
+        
+//      let channels = json?["tList"] as! [[String: AnyObject]]
+//        do {
+//            
+//            var json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves) as? [String: AnyObject]
+// 
+//            // 根据 tList 的 key 取出内容
+//            let channels = json?["tList"] as! [[String: AnyObject]]
+//
+//             // 遍历字典, 将字典转换成模型对象
+//            for i in 0 ..< channels.count {
+//            
+//                 //字典转模型
+//                let channelModel = ChannelModel(dict: channels[i])
+//                
+//                // 添加到数组中
+//                arrM.append(channelModel)
+//            }
+//           //对模型中的tid进行排序
+//            arrM.sort(by: { (s1, s2) -> Bool in
+//            
+////                return s1.tid! < s2.tid!
+////                return s1.topicid! < s2.topicid!
+//                return s1.cid! < s2.cid!
+//            })
+//            
+//        }
+//        catch {
+//            
+//        }
+//        return arrM
+//    }
+//}

@@ -8,13 +8,29 @@
 ![](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)
 ![](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)
+[![Twitter Follow](https://img.shields.io/twitter/follow/LiuChuan_.svg?style=social)](https://twitter.com/LiuChuan_)
 
 
 ## Swift项目-仿网易新闻客户端
-### 效果图: 
+- 效果图: 
 
+### 首页-Menu
+![](https://github.com/ChinaHackers/News/raw/master/Preview/Home-menu.gif)
+ 
+### 阅读
+![](https://github.com/ChinaHackers/News/raw/master/Preview/Read.gif)
 
-![](https://github.com/ChinaHackers/News/raw/master/Preview/preview.gif)
+### 直播
+![](https://github.com/ChinaHackers/News/raw/master/Preview/Live.gif)
+
+### 视频
+![](https://github.com/ChinaHackers/News/raw/master/Preview/Vedio.gif)
+
+### 我
+![](https://github.com/ChinaHackers/News/raw/master/Preview/Mine.gif)
+  
+  
+  
 
 ## 说明
 数据接口来源: 通过 Charles 抓包获得.
@@ -28,10 +44,12 @@
 - 项目中使用的第三方库
 	- SnapKit： 布局
 	- Kingfisher： 缓存图片
-	- SVProgressHUD：提示框 (待集成)
+	- SVProgressHUD：提示框
 	- FDFullscreenPopGesture：侧滑 (待集成)
-	- Alamofire ：网络请求
-	- SwiftyJSON：解析 json数据
+	- Alamofire ：Swift网络框架
+	- AFNetworking: OC版网络框架
+	- SwiftyJSON：解析JSON数据
+	- CVCalendar: 自定义视觉日历
 
 # 实现的功能
 
@@ -53,7 +71,7 @@
 - 图片接口 http://image.baidu.com/wisebrowse/data?tag1=一级分类&tag2=二级分类 
 - 视频接口  http://c.m.163.com/nc/video/home/0-10.html 
 - 直播 http://data.live.126.net/livechannel/previewlist.json
-- 近期热点  http://c.m.163.com/nc/search/hotWord.html
+- 搜索近期热点  http://c.m.163.com/nc/search/hotWord.html
 - 热点 http://c.3g.163.com/recommend/getSubDocPic?passport=&devId=B45E64F7-002F-4126-8C7E-3DB0ACF6C85E&size=40
 
 ###待完善```

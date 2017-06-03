@@ -11,7 +11,6 @@ import Kingfisher
 
 class CycleViewCell: UICollectionViewCell {
 
-    
     // MARK: - 控件属性
     @IBOutlet weak var iconImageView: UIImageView!      // 图片
     @IBOutlet weak var titleLabel: UILabel!             // 标题

@@ -21,13 +21,20 @@ class NetworkTool {
     
     class func requsetData(_ URLString: String, type: MethodType, parameters: [String: Any]? = nil, finishedCallback: @escaping (_ result: Any) -> ()) {
 
+        //MARK: 状态栏是否显示风火轮
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        ProgressHUD.show()
+        
+      
         
         let method = type == .get ? HTTPMethod.get : HTTPMethod.post
         
         Alamofire.request(URLString, method: method, parameters: parameters).responseJSON { (response) in
             
+             ProgressHUD.dismiss()
             
-//            // 效验是否有结果
+            // 效验是否有结果
 //            if let result = response.result.value {
 //                finishedCallback(result)
 //
@@ -43,8 +50,11 @@ class NetworkTool {
             
             // 2.将结果回调出去
             finishedCallback(result)
+        
+            
         }
       
     }
-    
+
+
 }

@@ -9,11 +9,6 @@
 import UIKit
 
 
-let RefreshHeaderTimeKey:NSString =  "RefreshHeaderView"
-
-
-
-
 // MARK: - 控件的类型
 enum LCRefreshViewType{
     case

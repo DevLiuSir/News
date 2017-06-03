@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Akh-Me-OCU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Akh-Me-OCU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,20 +49,20 @@
             </objects>
             <point key="canvasLocation" x="-534" y="-487"/>
         </scene>
-        <!--Photo-->
+        <!--Live-->
         <scene sceneID="twF-Zy-DOF">
             <objects>
-                <viewControllerPlaceholder storyboardName="Photo" id="cq3-ae-ZML" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Live" id="cq3-ae-ZML" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="37a-LJ-CxN"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4a-cr-npN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-533" y="-376"/>
         </scene>
-        <!--Video-->
+        <!--Vedio-->
         <scene sceneID="UFf-yy-rKx">
             <objects>
-                <viewControllerPlaceholder storyboardName="Video" id="45H-xe-l5W" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Vedio" id="45H-xe-l5W" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="CFX-Yi-r4a"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDR-YT-hb3" userLabel="First Responder" sceneMemberID="firstResponder"/>

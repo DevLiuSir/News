@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 // MARK: - 刷新视图 - 底部
 class LCRefreshFooterView: UIView {
 
@@ -165,7 +162,7 @@ extension LCRefreshFooterView {
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        //print(" 监听父控件的滚动!.........\(superScrollView.contentOffset.y)")
+//        print(" 监听父控件的滚动!.........\(superScrollView.contentOffset.y)")
         
         //MARK: - 根据拖动进度, 切换状态
         // 判断是否滚动
@@ -183,32 +180,8 @@ extension LCRefreshFooterView {
             // MARK: 手指拖动: 正常状态(normal) ->  等待加载(waitRefresh)
             
             // 实现FooderView加载一半, 就做出改变
-            // refreshView_FooderOffSet = (tableView内容高度 + tableView底部内边距) - refresh_FooterView高度 - refresh_FooterView高度一半
-           
+            // refreshView_FooderOffSet = (tableView内容高度 + tableView底部内边距) - refresh_FooterView高度 - refresh_FooterView高度一半           
             let refreshView_FooderOffSet: CGFloat = (superScrollView.contentSize.height + superScrollView.contentInset.bottom) - superScrollView.frame.height
-
-/*
-            if superScrollView.contentOffset.y < refreshView_FooderOffSet {
-                
-                setStatus(.normal)          // 正常状态 -上拉加载更多
-            
-            } else if superScrollView.contentOffset.y >= refreshView_FooderOffSet {
-                
-                setStatus(.waitRefresh)     // 等待刷新 - 松开加载更多
-            }
-                
-        }
-        
-        else { // MARK: - 手指离开: 正在刷新(refreshing) -> 加载完毕(loadover)
-
-            if Footer_refreshStatus == LCRefresh_FooterStatus.waitRefresh {
-
-                 setStatus(.loading)             // 加载中
-            }
-        }
-    }
-
- */
     
             guard superScrollView.contentOffset.y < refreshView_FooderOffSet else {
                 setStatus(.waitLoad)        // 松开加载更多

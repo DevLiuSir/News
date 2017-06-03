@@ -8,95 +8,96 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
 
+    
+    // UIGestureRecognizerDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        launchAnimation()
         
-    }
-
-    
-    
-    
-    // MARK: - 播放启动画面动画
-    private func launchAnimation() {
-        //获取启动视图
-        let vc = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "launch")
-        let launchview = vc.view!
         
-        let delegate = UIApplication.shared.delegate
+        //启用滑动返回（swipe back）
+        self.navigationController?.interactivePopGestureRecognizer!.delegate = self
         
-        delegate?.window!!.addSubview(launchview)
-        
-        //播放动画效果，完毕后将其移除
-        UIView.animate(withDuration: 2, delay: 1.5, options: .beginFromCurrentState,
-                       animations: {
-                        launchview.alpha = 0.0
-                        let transform = CATransform3DScale(CATransform3DIdentity, 1.5, 1.5, 1.0)
-                        launchview.layer.transform = transform
-        }) { (finished) in
-            launchview.removeFromSuperview()
-        }
+//        self.navigationController?.popViewController(animated: true)
     }
     
+        
     
-    // MARK: - 显示\隐藏 导航栏
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+}
+/*
+ // MARK: - 显示\隐藏 导航栏
+extension BaseViewController {
+ 
+     // MARK: 上推 -> 隐藏   下拉 -> 显示
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    
+        let offsetY: CGFloat = scrollView.contentOffset.y
         
-        // false: 向下    true: 向上
-        var scroll_Up_Or_Down : Bool = false
+        guard offsetY > 0 else {
+            
+            setNavigationBarTransformProgress(progress: 0)
+            return
+        }
+         guard offsetY >= 44 else {
+            
+             setNavigationBarTransformProgress(progress: offsetY / 44)
+             return
+        }
+       
+        setNavigationBarTransformProgress(progress: 1)
+    
+    }
+     
+    /// 设置导航栏改变进度
+    ///
+    /// - Parameter progress: 进度
+    private func setNavigationBarTransformProgress(progress: CGFloat) {
+     
+        UIView.animate(withDuration: 0.25) {
         
-        //定义起初 Y 轴偏移量
-        let newY : CGFloat = 0
-        var oldY : CGFloat = 0
-        
-        //获取当前滚动视图的contentOffset.y
-//        newY = tableView.contentOffset.y
-        
-        //判断滚动视图向上还是向下
-        if newY != oldY && newY > oldY {
-            
-            scroll_Up_Or_Down = true
-            
-        } else if newY < oldY {
-            
-            scroll_Up_Or_Down = false
-            
-        } else  {
-            
-            oldY = newY
+            self.navigationController?.navigationBar.lc_setTranslationY(translationY: -44 * progress)
+            self.navigationController?.navigationBar.lc_setElementsAlpha(alpha: 1 - progress)
+      
         }
         
+    }
+ 
+ }
+ 
+
+*/
+
+/*
+// MARK: 显示\隐藏 导航栏
+extension MeViewController {
+    
+    // MARK: 上推 -> 显示   下拉 -> 隐藏
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        //定义初始的navigationBar的位置
-        if newY == -60 {
+        let offsetY: CGFloat = scrollView.contentOffset.y
+        
+        guard offsetY < 0 else {
+            setNavigationBarTransformProgress(progress: 0)
+            self.navigationController?.navigationBar.lc_setBackgroundColor(backgroundColor: darkGreen)
+            return
+        }
+        setNavigationBarTransformProgress(progress: 1)
+        
+    }
+    
+    /// 设置导航栏改变进度
+    ///
+    /// - Parameter progress: 进度
+    private func setNavigationBarTransformProgress(progress: CGFloat) {
+        
+        UIView.animate(withDuration: 0.25) {
+            self.navigationController?.navigationBar.lc_setTranslationY(translationY: -64 * progress)
+            self.navigationController?.navigationBar.lc_setElementsAlpha(alpha: 1 - progress)
             
-            UIView.animate(withDuration: 1, animations: {
-                self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 20, width: screenW, height: navigationH)
-            })
-            
-        }else {
-            
-            if scroll_Up_Or_Down == true {  // 向上, 隐藏
-                
-                UIView.animate(withDuration: 1, animations: {
-                    self.navigationController?.navigationBar.frame = CGRect(x: 0, y: -40, width: screenW, height: navigationH + statusH)
-                    self.navigationController?.navigationBar.lc_setElementsAlpha(alpha: 0) // 导航栏图片透明
-                    
-                })
-                
-            } else if scroll_Up_Or_Down == false { // 向下, 显示
-                
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 20, width: screenW, height: navigationH)
-                    
-                    self.navigationController?.navigationBar.lc_setElementsAlpha(alpha: 1) // 导航栏图片不透明
-                })
-            }
         }
     }
     
 }
-
+*/

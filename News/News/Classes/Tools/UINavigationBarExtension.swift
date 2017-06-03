@@ -79,4 +79,5 @@ extension UINavigationBar {
         overlay?.removeFromSuperview()
         overlay = nil
     }
+
 }

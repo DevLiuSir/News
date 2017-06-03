@@ -1,17 +1,39 @@
 PODS:
-  - Alamofire (4.0.1)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - Alamofire (4.4.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - Kingfisher (3.2.0)
+  - CVCalendar (1.5.0)
+  - Kingfisher (3.6.0)
   - PullToRefreshKit (0.4.0)
+  - SnapKit (3.2.0)
+  - SVProgressHUD (2.1.2)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
+  - AFNetworking
   - Alamofire
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - CVCalendar
   - Kingfisher
   - PullToRefreshKit (~> 0.4.0)
+  - SnapKit
+  - SVProgressHUD
   - SwiftyJSON (from `https://github.com/IBM-Swift/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
@@ -22,19 +44,23 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
-    :commit: dcf98f9bf3a632a7f40679b7da46f09681e48526
+    :commit: acc480fbe023c6e5fe40f68593f4a70a8c4c7ad5
     :git: https://github.com/ViccAlexander/Chameleon.git
   SwiftyJSON:
-    :commit: 5ca3f000588b49a3184271c21d36ade1205d81b2
+    :commit: 7d78e6a9907a5ab23e3f8d4d4ce3e2101abeec9d
     :git: https://github.com/IBM-Swift/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  Kingfisher: 50407d1d5dbc34965009d425a286342ff36a84ea
+  CVCalendar: 5d51a7bda1b9439b612de69d86a91a73befa1936
+  Kingfisher: 300035f9a40634dc9b452d946c9f22250688fecd
   PullToRefreshKit: 5ec15cd0c0828804bcac637c9db6df70c048c9ce
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 1c3cce6e11442dc365858a7bd3cccc76f4f0c92c
+PODFILE CHECKSUM: 9e2f9d9225ffc17eea2c330f7f658a5de82b28fd
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

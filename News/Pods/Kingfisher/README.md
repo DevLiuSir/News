@@ -5,24 +5,14 @@
 </p>
 
 <p align="center">
-
 <a href="https://travis-ci.org/onevcat/Kingfisher"><img src="https://img.shields.io/travis/onevcat/Kingfisher/master.svg"></a>
-
 <a href="https://github.com/Carthage/Carthage/"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat"></a>
-
 <a href="https://swift.org/package-manager/"><img src="https://img.shields.io/badge/SPM-ready-orange.svg"></a>
-
 <a href="http://cocoadocs.org/docsets/Kingfisher"><img src="https://img.shields.io/cocoapods/v/Kingfisher.svg?style=flat"></a>
-
 <a href="https://raw.githubusercontent.com/onevcat/Kingfisher/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/Kingfisher.svg?style=flat"></a>
-
 <a href="http://cocoadocs.org/docsets/Kingfisher"><img src="https://img.shields.io/cocoapods/p/Kingfisher.svg?style=flat"></a>
-
 <a href="https://codebeat.co/projects/github-com-onevcat-kingfisher"><img alt="codebeat badge" src="https://codebeat.co/assets/svg/badges/A-398b39-669406e9e1b136187b91af587d4092b0160370f271f66a651f444b990c2730e9.svg" /></a>
-
 <img src="https://img.shields.io/badge/made%20with-%3C3-orange.svg">
-
-
 </p>
 
 Kingfisher is a lightweight, pure-Swift library for downloading and caching images from the web. This project is heavily inspired by the popular [SDWebImage](https://github.com/rs/SDWebImage). It provides you a chance to use a pure-Swift alternative in your next app.
@@ -70,6 +60,12 @@ We prepared a [wiki page](https://github.com/onevcat/Kingfisher/wiki). You can f
 ### Future of Kingfisher
 
 I want to keep Kingfisher lightweight. This framework will focus on providing a simple solution for downloading and caching images. This doesn’t mean the framework can’t be improved. Kingfisher is far from perfect, so necessary and useful updates will be made to make it better.
+
+### Developments and Tests
+
+Any contributing and pull requests are warmly welcome. However, before you plan to implement some features or try to fix an uncertain issue, it is recommended to open a discussion first. 
+
+The test images are contained in another project to keep this project repo fast and slim. You could run `./setup.sh` in the root folder of Kingfisher to clone the test images when you need to run the tests target. It would be appreciated if your pull requests could build and with all tests green. :)
 
 ### About the logo
 
