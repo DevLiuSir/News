@@ -20,8 +20,17 @@ class MeViewController: UIViewController {
     
     /// 头部视图
     var headerView: MyHeaderView = {
-        let hdView = MyHeaderView.returnHeaderView()
-        return hdView
+        let headerView = MyHeaderView.returnHeaderView()
+        
+        headerView.nameBtn.addTarget(self, action: #selector(iconButtonClick), for: .touchUpInside)
+        
+        
+        
+//        headerView.iconButton.addTarget(self, action: #selector(iconButtonClick), for: .touchUpInside)
+//        headerView.messageButton.addTarget(self, action: #selector(messageButtonClick), for: .touchUpInside)
+//        headerView.settingButton.addTarget(self, action: #selector(settingButtonClick), for: .touchUpInside)
+        
+        return headerView
     }()
     
     /// 波动视图
@@ -98,28 +107,15 @@ class MeViewController: UIViewController {
     /// 配置头部视图
     private func configHaderView() {
         
-        headerView.iconButtonClick = {
-            let nib = UINib(nibName: "LoginViewController", bundle: nil)
-            
-            
-            let loginVC = nib.instantiate(withOwner: nil, options: nil)[0] as! LoginViewController
-            
-//            let registerVC = nib.instantiate(withOwner: nil, options: nil)[0] as! RegisterViewController
-            
-            
-            self.present(loginVC, animated: true, completion: nil)
-            
-            
-//            self.navigationController?.pushViewController(loginVC, animated: true)
-        }
-        
         view.addSubview(headerView)
-        
         headerView.snp.makeConstraints { (make) in
             make.top.left.equalTo(view)
             make.width.equalTo(view.snp.width)
             make.height.equalTo(300)
         }
+        
+        
+        
     }
     
     /// 配置波纹视图
@@ -243,6 +239,25 @@ extension MeViewController: UITableViewDelegate {
 
 // MARK: - 监听事件
 extension MeViewController {
+    
+    
+    /// 头像点击事件
+    func iconButtonClick() {
+        
+//        let nib = UINib(nibName: "LoginViewController", bundle: nil)
+//        let loginVC = nib.instantiate(withOwner: nil, options: nil)[0] as! LoginViewController
+        
+        let loginVC = LoginViewController()
+        let nav = UINavigationController(rootViewController: loginVC)
+        nav.navigationBar.barTintColor = darkGreen
+        present(nav, animated: true, completion: nil)
+        
+        
+//        navigationController?.pushViewController(loginVC, animated: true)
+        
+//            let registerVC = nib.instantiate(withOwner: nil, options: nil)[0] as! RegisterViewController
+    }
+    
    
     /// 开关按钮点击事件
     ///

@@ -9,15 +9,7 @@
 import UIKit
 import SnapKit
 
-typealias messageButtonClickMethod = () -> Void
-typealias settingButtonClickMethod = () -> Void
-typealias iconButtonClickMethod = () -> Void
-
 class MyHeaderView: UIView {
-    
-    var messageButtonClick: messageButtonClickMethod?
-    var settingButtonClick: settingButtonClickMethod?
-    var iconButtonClick: iconButtonClickMethod?
     
     // MARK: - 懒加载
     /// 背景图片
@@ -46,6 +38,15 @@ class MyHeaderView: UIView {
         return iconButton
     }()
     
+    /// 头像按钮遮罩
+    lazy var coverIcon: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red:0.82, green:0.82, blue:0.89, alpha:0.72)
+        view.layer.cornerRadius = 41
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
     /// 昵称标签
 //    fileprivate lazy var nameLabel: UILabel = {
 //        let nameLabel = UILabel()
@@ -58,7 +59,7 @@ class MyHeaderView: UIView {
 //    }()
     
     /// 登录按钮
-    fileprivate lazy var nameBtn: UIButton = {
+    lazy var nameBtn: UIButton = {
         let nameBtn = UIButton(type: .custom)
         nameBtn.setTitle("登录", for: .normal)
         nameBtn.titleLabel?.adjustsFontForContentSizeCategory = true    // 自动调整按钮字体大小
@@ -80,9 +81,14 @@ class MyHeaderView: UIView {
         let headerView = MyHeaderView()
         
         headerView.addSubview(headerView.bgImageView)
+        
+        
 //        headerView.addSubview(headerView.messageButton)
+        
         headerView.addSubview(headerView.settingButton)
+        headerView.addSubview(headerView.coverIcon)
         headerView.addSubview(headerView.iconButton)
+        
 //        headerView.addSubview(headerView.nameLabel)
         headerView.addSubview(headerView.nameBtn)
         
@@ -118,29 +124,19 @@ class MyHeaderView: UIView {
         
         
         headerView.nameBtn.snp.makeConstraints { (make) in
-//            make.left.equalTo(headerView.snp.left).offset(10)
-//            make.right.equalTo(headerView.snp.right).offset(-10)
-            
             make.centerX.equalTo(headerView.snp.centerX)
             make.size.equalTo(CGSize(width: 90, height: 30))
             make.top.equalTo(headerView.iconButton.snp.bottom).offset(20)
             
         }
         
-//        headerView.messageButton.addTarget(headerView, action: #selector(headerView.selectButtonClick(button:)), for: .touchUpInside)
-        headerView.settingButton.addTarget(headerView, action: #selector(headerView.selectButtonClick(button:)), for: .touchUpInside)
-        headerView.iconButton.addTarget(headerView, action: #selector(headerView.selectButtonClick(button:)), for: .touchUpInside)
+        
+        headerView.coverIcon.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 82, height: 82))
+            make.centerX.equalTo(headerView.snp.centerX)
+            make.centerY.equalTo(headerView.iconButton)
+            
+        } 
         return headerView
     }
- 
-
-    func selectButtonClick(button: UIButton) {
-        switch button.tag {
-//        case 10: if messageButtonClick != nil { messageButtonClick!() }
-        case 2: if settingButtonClick != nil { settingButtonClick!() }
-        case 3: if iconButtonClick != nil { iconButtonClick!() }
-        default:
-            break
-        }
-    }   
 }

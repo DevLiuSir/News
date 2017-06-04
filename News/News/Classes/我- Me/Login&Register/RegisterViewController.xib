@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YMRegisterViewController" customModule="News" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="News" customModuleProvider="target">
             <connections>
                 <outlet property="mobileField" destination="utJ-Nq-k3H" id="ceR-5l-n11"/>
                 <outlet property="vertifyButton" destination="1Av-Id-K2n" id="sOf-0y-t2g"/>
@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTb-tz-uuO">
-                    <rect key="frame" x="0.0" y="90" width="375" height="42"/>
+                    <rect key="frame" x="0.0" y="100" width="375" height="42"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="utJ-Nq-k3H">
                             <rect key="frame" x="10" y="0.0" width="355" height="42"/>
@@ -60,13 +60,13 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请确保您的手机畅通，接收验证码短信" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auX-2b-GOc">
-                    <rect key="frame" x="10" y="63" width="243" height="17"/>
+                    <rect key="frame" x="10" y="73" width="243" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Av-Id-K2n">
-                    <rect key="frame" x="15" y="172" width="345" height="40"/>
+                    <rect key="frame" x="15" y="162" width="345" height="40"/>
                     <color key="backgroundColor" red="0.27450980392156865" green="0.71764705882352942" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="wQl-Wd-AgA"/>
@@ -85,10 +85,10 @@
             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="1Av-Id-K2n" secondAttribute="trailing" constant="15" id="7nv-y1-uUV"/>
-                <constraint firstItem="1Av-Id-K2n" firstAttribute="top" secondItem="rTb-tz-uuO" secondAttribute="bottom" constant="40" id="8f0-cv-UeY"/>
+                <constraint firstItem="1Av-Id-K2n" firstAttribute="top" secondItem="rTb-tz-uuO" secondAttribute="bottom" constant="20" id="8f0-cv-UeY"/>
                 <constraint firstItem="rTb-tz-uuO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AFN-Xa-8WQ"/>
                 <constraint firstItem="rTb-tz-uuO" firstAttribute="top" secondItem="auX-2b-GOc" secondAttribute="bottom" constant="10" id="Ibz-dY-dfX"/>
-                <constraint firstItem="rTb-tz-uuO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="LRD-2t-h3i"/>
+                <constraint firstItem="rTb-tz-uuO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="LRD-2t-h3i"/>
                 <constraint firstItem="1Av-Id-K2n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="ksS-Vh-Scc"/>
                 <constraint firstItem="auX-2b-GOc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="tx9-KQ-M59"/>
                 <constraint firstAttribute="trailing" secondItem="rTb-tz-uuO" secondAttribute="trailing" id="y5M-nW-j8d"/>

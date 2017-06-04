@@ -41,7 +41,6 @@
 		6B818B481D5CE0950038C5C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B818B471D5CE0950038C5C3 /* Assets.xcassets */; };
 		6B818B4B1D5CE0950038C5C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B818B491D5CE0950038C5C3 /* LaunchScreen.storyboard */; };
 		6B8ADB671E0DA3FD007D14E5 /* LCRefreshView_Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8ADB661E0DA3FD007D14E5 /* LCRefreshView_Enum.swift */; };
-		6B8F2DDA1EE24FAC00B51238 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F2DD91EE24FAC00B51238 /* LoginViewController.storyboard */; };
 		6B917BBF1DDD8DB200423D25 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B917BBE1DDD8DB200423D25 /* BaseViewController.swift */; };
 		6B9A4B891E7B6AF0004B2EA9 /* showNewStatusCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9A4B881E7B6AF0004B2EA9 /* showNewStatusCount.swift */; };
 		6B9F38081E84A1BC0016FB5A /* ChannelTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F38061E84A1BC0016FB5A /* ChannelTitleView.swift */; };
@@ -123,7 +122,6 @@
 		6B818B4A1D5CE0950038C5C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B818B4C1D5CE0950038C5C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B8ADB661E0DA3FD007D14E5 /* LCRefreshView_Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCRefreshView_Enum.swift; sourceTree = "<group>"; };
-		6B8F2DD91EE24FAC00B51238 /* LoginViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		6B917BBE1DDD8DB200423D25 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaseViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6B9A4B881E7B6AF0004B2EA9 /* showNewStatusCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showNewStatusCount.swift; sourceTree = "<group>"; };
 		6B9F38061E84A1BC0016FB5A /* ChannelTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTitleView.swift; sourceTree = "<group>"; };
@@ -529,7 +527,6 @@
 			isa = PBXGroup;
 			children = (
 				6BE0667F1ED432ED00B163D0 /* LoginViewController.swift */,
-				6B8F2DD91EE24FAC00B51238 /* LoginViewController.storyboard */,
 				6BE066801ED432ED00B163D0 /* LoginViewController.xib */,
 				6BE066811ED432ED00B163D0 /* RegisterViewController.swift */,
 				6BE066821ED432ED00B163D0 /* RegisterViewController.xib */,
@@ -694,7 +691,6 @@
 				6BE5F1641E77105100B72695 /* Live.storyboard in Resources */,
 				6B818B4B1D5CE0950038C5C3 /* LaunchScreen.storyboard in Resources */,
 				6BBD2CB81D96FA0B00F9EB23 /* News.storyboard in Resources */,
-				6B8F2DDA1EE24FAC00B51238 /* LoginViewController.storyboard in Resources */,
 				6BF29B8E1E7BEAD7008711BD /* tupianlunbo@2x.png in Resources */,
 				6BBD2CBC1D96FA0B00F9EB23 /* Read.storyboard in Resources */,
 				6B3CB2681DD61DAE00DBE0A6 /* NewViewCell.xib in Resources */,
