@@ -28,19 +28,18 @@ private let SelectColor : (CGFloat, CGFloat, CGFloat) = (74,183,117)
 /// 缩放的最大值
 private let maxScale : CGFloat = 1.2
 
-// MARK: - 标题视图
+
 class TitleView: UIView {
     
     // MARK: - 定义属性
     fileprivate var currentIndex : Int = 0          // 当前的下标值
-    weak var delegate : TitleViewDelegate?          // 代理属性
-    
     fileprivate var margin : CGFloat = 0            // 边距
+    weak var delegate : TitleViewDelegate?          // 代理属性
 //    fileprivate var titles: [String]
     
+
     
-    
-    // MARK: - 懒加载属性
+    // MARK: - 懒加载
     /// 频道列表
     fileprivate lazy var channels = ChannelModel.channels()
     
@@ -52,11 +51,7 @@ class TitleView: UIView {
        
         // 创建UIScrollView, 设置其相关属性
         let scrollView = UIScrollView()
-        
-        /* scrollsToTop 是 UIScrollView 的一个属性.
-         主要用于点击设备的状态栏时，是scrollsToTop == true的控件滚动返回至顶部。
-        */
-        scrollView.scrollsToTop = false
+        scrollView.scrollsToTop = false     // 点击状态栏时，scrollsToTop == true的控件滚动返回至顶部
         scrollView.bounces = true
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false // 是否显示水平指示器
@@ -74,7 +69,6 @@ class TitleView: UIView {
         super.init(frame: frame)
         
         setupUI()
-   
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -89,11 +83,12 @@ extension TitleView {
     
     /// 设置UI
     fileprivate func setupUI() {
-        // 添加 Scrollview
+
         addSubview(scrollView)
         scrollView.frame = bounds
         
         setUpTitleLabels()
+        setupTitleLabelsFrame()
         setupBottomLineAndScrollLine()
     }
     
@@ -125,34 +120,13 @@ extension TitleView {
         
         // 设置scrollLine的属性
         scrollLine.frame = CGRect(x: lineX, y: lineY, width: lineW, height: lineH)
-/*
-         //====================
-        
-        let templabel = UILabel(frame: CGRect(x: 0, y: 0, width: 1000, height: 1000))
-        templabel.text = firstLabel.text;
-        templabel.sizeToFit()
-        
-        margin = firstLabel.frame.width / 2 - templabel.frame.width / 2
-        
-        scrollLine.frame = CGRect(x: firstLabel.frame.width / 2 - templabel.frame.width / 2 , y: frame.height - scrollLineH, width: templabel.frame.width, height: scrollLineH)
-*/
-//=============
-        
         scrollLine.backgroundColor = darkGreen
         scrollView.addSubview(scrollLine)
     }
  
     /// 设置标题栏的分类
     fileprivate func setUpTitleLabels() {
-        /*
-         * 临时常量\变量
-         标题的个数必须和数组的个数相同"
-         定义一个常量表示标题按钮的个数, 即就是数组元素的个数
-         */
-        let labelY: CGFloat = 0
-        let labelWidth: CGFloat = 70
-        let labelHeight: CGFloat = frame.height - scrollLineH
-        
+     
         for index in 0 ..< channels.count {
             
             // 1.创建Label, 并设置其相关属性
@@ -166,11 +140,7 @@ extension TitleView {
             
             // 如果标签索引为 0, 设置第一个Label颜色为绿色\否则灰色
             label.textColor = index == 0 ? darkGreen : UIColor.darkGray
-            
-            // 2.设置Label的位置
-            let labelX: CGFloat = labelWidth * CGFloat(index)
-            label.frame = CGRect(x: labelX, y: labelY, width: labelWidth, height: labelHeight)
-            
+         
             // 3.给Label添加手势
             label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(labelClick(_:))))
             
@@ -179,7 +149,51 @@ extension TitleView {
         }
         
         // 4.设置scrollView的滚动范围
-        scrollView.contentSize = CGSize(width: channels.count * Int(labelWidth), height: 0)
+        //scrollView.contentSize = CGSize(width: channels.count * Int(labelWidth), height: 0)
+    }
+    
+    
+    
+    /// 设置UILabel的位置
+    private func setupTitleLabelsFrame() {
+        
+        /* 临时常量\变量 */
+        
+        // 标题的个数必须和数组的个数相同
+       // let count = channels.count
+        
+        for (i ,label) in titleLabels.enumerated() {
+            
+            var labelWidth: CGFloat = 0
+            let labelHeight: CGFloat = frame.height - scrollLineH
+            var labelX: CGFloat = labelWidth * CGFloat(i)
+            let labelY: CGFloat = 0
+            let itemMargin: CGFloat = 30                // 标题分类Label之间的间距
+            
+            // MAXFLOAT: 较大的值
+            let size = CGSize(width: CGFloat(MAXFLOAT), height: 0)
+            
+            // 根据文字来计算宽度
+            
+            let tei = channels[i].tname! as NSString
+            
+            labelWidth = tei.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: label.font], context: nil).width
+            
+            // 第0个Label的X值,与其他label的x值
+            if i == 0 {
+                labelX = itemMargin * CGFloat(0.5)
+            } else {
+                // 上一个Label
+                let prelabel = titleLabels[i - 1]
+                labelX = CGFloat(prelabel.frame.maxX) + itemMargin
+            }
+            
+            // 2.设置Label的位置
+            label.frame = CGRect(x: labelX, y: labelY, width: labelWidth, height: labelHeight)
+        }
+        
+        // 4.设置scrollView的滚动范围
+        scrollView.contentSize = CGSize(width: Int(titleLabels.last!.frame.maxX), height: 0)
     }
 }
 
@@ -237,15 +251,15 @@ extension TitleView {
         scrollView.setContentOffset(offset, animated: true)
 
         // 7.改变滚动条的位置
-        // 底部滑块的 X 值 == 等于当前Label的 X
-        let scrollLineX = currentLabel.frame.origin.x
-        // 底部滑块的宽度 == 当前Label的宽度
-        let scrollLineW = currentLabel.frame.width
         
         //给滑块添加动画
         UIView.animate(withDuration: 0.25) {
-            self.scrollLine.frame.origin.x = scrollLineX
-            self.scrollLine.frame.size.width = scrollLineW
+            
+            // 底部滑块的 X 值 == 等于当前Label的 X
+            self.scrollLine.frame.origin.x = currentLabel.frame.origin.x
+           
+            // 底部滑块的宽度 == 当前Label的宽度
+            self.scrollLine.frame.size.width = currentLabel.frame.width
         }
     
         // 8.通知代理
@@ -321,11 +335,18 @@ extension TitleView : UIScrollViewDelegate {
         /// 总的滑动距离值
         let moveTotalX = selected_Label.frame.origin.x - normal_Label.frame.origin.x
         
+        /// 总的滑动宽度
+        let deltaTotalWidth = selected_Label.frame.width - normal_Label.frame.width
+        
         /// 需要滑动的x值
         let moveX = moveTotalX * progress
+        
+        /// 需要滑动的宽度值
+        let deltaW = deltaTotalWidth * progress
        
         // 改变滚动条的位置
         scrollLine.frame.origin.x = normal_Label.frame.origin.x + moveX
+        scrollLine.frame.size.width = normal_Label.frame.width + deltaW
  
         
         // 3.颜色的渐变(复杂)
@@ -346,14 +367,7 @@ extension TitleView : UIScrollViewDelegate {
         
         normal_Label.transform = CGAffineTransform(scaleX: maxScale - deltaScale * progress, y: maxScale - deltaScale * progress)
         selected_Label.transform = CGAffineTransform(scaleX: 1.0 + deltaScale * progress, y: 1.0 + deltaScale * progress)
-        
-        // 拖动contentView,改变下划线的大小
-        let deltaX = selected_Label.frame.origin.x - normal_Label.frame.origin.x
-        let deltaWidth = selected_Label.frame.width - normal_Label.frame.width
-        
-        scrollLine.frame.size.width = normal_Label.frame.width + deltaWidth * progress
-        scrollLine.frame.origin.x = normal_Label.frame.origin.x + deltaX * progress
-    
+
         // 6.标题居中
         // 本质: 修改 标题滚动视图 的偏移量
         // 偏移量 = label 的中心 X 减去屏幕宽度的一半

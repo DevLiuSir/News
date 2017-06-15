@@ -121,10 +121,9 @@ class SearchViewController: UIViewController {
         // 设置collectionView边距
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
-        // 注册cell
+        // 注册cell\头部
         collectionView.register(HotSearchCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        // 注册头部
         collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseHeaderIdentifier)
        
         return collectionView
@@ -142,24 +141,25 @@ class SearchViewController: UIViewController {
     /// 配置UI
     private func configUI() {
         
-        navigationController?.navigationBar.barTintColor = darkGreen
+        view.addSubview(collectionView)
         
-        // 设置导航栏的标题视图 \ 左右Item
+        configNavigationBar()
+        
+    }
+    
+    /// 配置导航栏
+    private func configNavigationBar() {
+        navigationController?.navigationBar.barTintColor = darkGreen
         navigationItem.titleView = searchBar
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIView())
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "  取消", style: .plain, target: self, action: #selector(backButtonClick))
         navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 15)], for: .normal)
-        
-        // 添加控件
-        view.addSubview(collectionView)
     }
     
     // MARK: 取消按钮点击事件
     @objc private func backButtonClick() {
         
-        // searchBar 不再是第一响应, 收回键盘
-        searchBar.resignFirstResponder()
-        
+        searchBar.resignFirstResponder()        // searchBar 不再是第一响应, 收回键盘
         
         // 非模态返回
         _ = navigationController?.popViewController(animated: true)
@@ -170,7 +170,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-// MARK: - 遵守 UICollectionView 数据源协议
+// MARK: - 遵守 UICollectionViewDataSource 协议
 extension SearchViewController: UICollectionViewDataSource {
  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -188,8 +188,8 @@ extension SearchViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HotSearchCollectionViewCell
        
         cell.hotButton.setTitle(hotTitle, for: .normal)                 // 设置热门搜索中按钮的文字
-//        cell.hotButton.addTarget(self, action: #selector(hotBtnClicked), for: .touchUpInside)
         cell.hotButton.setBackgroundImage(UIImage(named: "" ), for: .normal)
+        //        cell.hotButton.addTarget(self, action: #selector(hotBtnClicked), for: .touchUpInside)
         
 //        cell.deleteButton.isHidden = true                               // 隐藏删除按钮
 //        cell.RankLabel.text = "\(rankNumber)"                           // 设置排行榜文字
@@ -255,10 +255,16 @@ extension SearchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let ad = search_models[indexPath.item].hotWord
+//        let ad = search_models[indexPath.item].hotWord
      
         
     }
+    
+    // 移动cell
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
+    
 }
 
 // MARK: - 遵守UISearchBarDelegate 协议

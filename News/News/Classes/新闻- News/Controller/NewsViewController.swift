@@ -151,7 +151,7 @@ extension NewsViewController {
         
         
         // 右边的Item
-        // 大小
+        /// 尺寸
         let size = CGSize(width: 35, height: 35)
         
         /// 搜索按钮
@@ -293,8 +293,6 @@ extension NewsViewController {
         let calendarVC = CalendarController()
         
         navigationController?.pushViewController(calendarVC, animated: true)
-        
-        
     }
     
     /// 搜索按钮点击事件
