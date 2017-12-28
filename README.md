@@ -7,7 +7,7 @@
 [![Swift &3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 ![](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)
 ![](https://img.shields.io/badge/platform-ios-lightgrey.svg)
-![](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)
+![](https://img.shields.io/github/stars/ChinaHackers/News.svg?style=social&label=Star)
 [![Twitter Follow](https://img.shields.io/twitter/follow/LiuChuan_.svg?style=social)](https://twitter.com/LiuChuan_)
 
 
